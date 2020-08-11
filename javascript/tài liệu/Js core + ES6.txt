@@ -1,0 +1,126 @@
+﻿1. Biến trong js:
+
+2. Kiểu dữ liệu cơ bản:
+Primitives types: 
+- Number
+- String 
+- Boolean
+Special Types:
+- Undefined
+- null
+References Object:
+- Array
+- Object
+
+3. Biểu thức toán học
+ 	1. ++ - -
+	2. * / %
+	3. + -
+	4. = += -= *= /=
+	5. > >= < <= === == !== !=
+
+4. for, for..of, for..in
+
+5. If..else và if..else lồng nhau
+
+6.switch..case
+
+7. Toán tử 3 ngôi
+
+8. while, do..while
+
+9. Function
+Tạo thường:
+- function ten_fn( [param1], [param2], ...){
+    return ... ( optional )
+}
+Anonymos function
+var ten_fn = ( [param1], [param2], ...){
+   return ... ( optional )
+}
+
+10. Callback, Closure, Callback hell
+
+11. Object
+- Object literal:
+var ten_obj = {
+    ten_prop : value,
+    ten_fn : function( [param1], [param2], ...){
+          return ... ( optional )
+    }
+}
+- Contructor function và prototype: 
+function ten_obj( [param1], [param2], ... ) {
+     this.ten_prop = param1
+     ....
+     this.ten_fn = function( [param1], [param2], ... ){
+           return ... ( optional )
+     }
+}
+ + tạo đối tượng = toán tử new:
+	var ten_bien = new ten_obj([param1], [param2], ...);
+ + thêm thuộc tính, phương thức chung cho nhóm đối tượng với từ khóa prototype:
+	ten_obj.prototype.ten_prop = value;
+	ten_obj.prototype.ten_fn = function( [param1], [param2], ... ){ return ... (optional) }
+
+12. Math và Date Object
+
+13. Array và Array function
+- concat()
+- join()
+- push() & pop()
+- shift & unshift
+- slice và splice
+* Hàm đặc biệt ( tham số truyền vào là 1 hàm )
+- find
+- filter
+- every
+- sort
+(a,b) : < 0 a b
+else b a
+- map 
+- reduce
+
+14. Sync vs Async
+
+15. Promise và Promise.all
+
+16. Async.. await
+
+17. setTimeOut va setInterval
+
+18. ES6
+- Hoisting
+- var, let, const
+- arrow function
+- this ( this trong hàm lồng nhau không được thừa kế)
+vd: var a ={
+    name: 'thanh',
+    sayHi: function(){
+    	setTimeOut(function(){
+	     alert(this.name);
+	},2000)
+    }
+} 
+=> do hàm lồng sẽ đn ra context mới => this != đối tượng a => this.name = global contex = undefined
+sdung arrow function trong t.hop này sẽ được thừa kế vì trong arrow function không có context => this = this context hàm gần nhất
+
+- arguments, default param
+- call, apply, bind
+- class, extends, method overriding, super, static
+- rest và spread 
+- closure
+- destructuring
+
+19. DOM và event\
+- Page element node, dom tree, 
+Hàm: 
+- getElementById, ByTag, ByClassName, querySelector, querySelectorAll , innerText, innerHtml
+- lastElementChild, lastChild, firstElementChild, nextElementSibling, nextSibling, children, childNodes
+- createElement, insertBefore, removeChild, apendChild
+- Js thay doi css: var p = getElementById('p').style.border = 1px solid black
+- Js get data cua form
+- document.write
+- event: onClick, onChange, onDoubleClick,... 
+- addEventListener
+- event.stopPropagation

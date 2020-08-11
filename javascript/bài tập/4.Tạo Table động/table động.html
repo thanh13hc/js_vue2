@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- CSS only -->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h1 class="display-4">TẠO TABLE ĐỘNG</h1>
+        <form>
+          <div class="form-group">
+            <label for="">Số hàng</label>
+            <input type="text" class="form-control" name="" id="cols" aria-describedby="helpId"
+              placeholder="Nhập vào số hàng" required>
+            <p style="color: red;"></p>
+          </div>
+          <div class="form-group">
+            <label for="">Số cột</label>
+            <input type="text" class="form-control" name="" id="rows" aria-describedby="helpId"
+              placeholder="Nhập vào số cột" required>
+            <p style="color: red;"></p>
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="event.preventDefault(); insert();">Submit</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="row mt-3" id="table">
+      
+    </div>
+  </div>
+  </div>
+
+  <script>
+
+    function insert(){
+      var col = document.getElementById("cols").value;
+      var row = document.getElementById("rows").value;
+      var count = 0;
+
+      if (checkValue(col, row)) {
+        col = parseInt(col);
+        row = parseInt(row);
+
+        var divTable = document.getElementById("table");
+
+        var divCol = document.createElement("div");
+        divCol.className = 'col-sm-3';
+        divTable.appendChild(divCol);
+
+        var table = document.createElement("table");
+        table.className = 'table';
+        divCol.appendChild(table);
+
+        var tBody = document.createElement("tbody");
+        table.appendChild(tBody);
+
+        for (var i = 0; i < col; i++) {
+          var tr = document.createElement("tr");
+          tBody.appendChild(tr);
+          for (var j = 0; j < row; j++) {
+            var td = document.createElement("td");
+            var text = document.createTextNode(++count);
+            td.appendChild(text);
+            tr.appendChild(td);
+          }
+        }
+      }
+
+      col.value = "";
+      row.value = "";
+    }
+
+    function checkValue(col, row) {
+      var theP = document.getElementsByTagName("p");
+      var flag = true;
+
+      if (isNaN(col)) {
+        theP[0].innerHTML = "Số hàng nhập vào không hợp lệ";
+        flag = false;
+      }
+      else {
+        theP[0].innerHTML = "";
+      }
+      if (isNaN(row)) {
+        theP[1].innerHTML = "Số cột nhập vào không hợp lệ";
+        flag = false;
+      }
+      else {
+        theP[1].innerHTML = "";
+      }
+
+      return flag;
+    }
+  </script>
+</body>
+
+</html>

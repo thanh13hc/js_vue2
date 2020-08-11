@@ -1,0 +1,4 @@
+- v-text, v-html
+- v-bind, v-for
+- v-on(@): v-on:click='method' == @click='method'
+- v-model

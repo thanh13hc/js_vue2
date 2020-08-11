@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- CSS only -->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script text="text/javascript" src="js/vue.js"></script>
+  <style>
+    .far {
+      color: #4e73df;
+      font-size: 1.1rem;
+      margin-right: 0.7rem;
+      cursor: pointer;
+    }
+
+    .fa-trash-alt {
+      color: #e74a3b;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="table">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <label class="input-group-text" for="inputGroupSelect01">Số hàng</label>
+          </div>
+          <select class="custom-select" id="inputGroupSelect01" v-model='changeData.pageSize'>
+            <option value="5" selected>Choose...</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="table-responsive">
+          <table class="table">
+            <caption>List of users</caption>
+            <thead>
+              <tr>
+                <th scope="col" @click="mySort('id')" style="cursor: pointer;">ID</th>
+                <th scope="col" @click="mySort('first')" style="cursor: pointer;">First</th>
+                <th scope="col" @click="mySort('last')" style="cursor: pointer;">Last</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for='item in sortObj'>
+                <td>{{item.id}}</td>
+                <td>{{item.first}}</td>
+                <td>{{item.last}}</td>
+                <td>{{item.email}}</td>
+                <td><i class="far fa-edit"></i><i class="far fa-trash-alt"></i></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Sort by <span style="color:rgb(168, 24, 24)">{{changeData.currentSort}}</span></p>
+        <p>Sort <span style="color:red">{{changeData.sortType}}</span></p>
+        <p>Size <span style="color:red">{{changeData.pageSize}}</span></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var vm1 = new Vue({
+      el: '#',
+      components: {
+        comp: {
+          template: '#temp',
+          data: function () {
+            return {}
+          },
+          props: [],
+          methods: {}
+        }
+      }
+    })
+
+    var vm2 = new Vue({
+      el: '#table',
+      data: {
+        obj: [
+          { id: 1, first: 'Mark', last: 'Otto', email: 'kito_kio@vn.edu' },
+          { id: 2, first: 'Amare', last: 'Wong', email: '' },
+          { id: 3, first: 'Đặng', last: 'Ngọc Thanh', email: 'thanh13hc@gmail.com' },
+          { id: 4, first: 'Nguyễn', last: 'Nhật Minh', email: '' },
+          { id: 5, first: 'Phạm', last: 'Hữu Thái', email: '' },
+          { id: 6, first: 'Nguyễn', last: 'Đình Hải', email: '' },
+          { id: 7, first: 'Phạm', last: 'Hồng Thắng', email: '' },
+          { id: 8, first: '', last: '', email: '' },
+          { id: 9, first: '', last: '', email: '' },
+          { id: 10, first: '', last: '', email: '' },
+          { id: 11, first: '', last: '', email: '' },
+          { id: 12, first: '', last: '', email: '' },
+          { id: 13, first: '', last: '', email: '' },
+          { id: 14, first: '', last: '', email: '' },
+          { id: 15, first: '', last: '', email: '' },
+          { id: 16, first: '', last: '', email: '' },
+          { id: 17, first: '', last: '', email: '' },
+          { id: 18, first: '', last: '', email: '' },
+          { id: 19, first: '', last: '', email: '' },
+          { id: 20, first: '', last: '', email: '' },
+          { id: 21, first: '', last: '', email: '' }
+        ],
+        changeData: {
+          currentSort: 'id',
+          sortType: 'asc',
+          pageSize: 5,
+          currentPage: 1
+        }
+      },
+      computed: {
+        sortObj: function () {
+          return this.obj.sort((a, b) => {
+            let tmg = (this.changeData.sortType === 'asc' ? 1 : -1)
+            if (a[this.currentSort] < b[this.currentSort])
+              return -tmg
+            else if (a[this.currentSort] < b[this.currentSort])
+              return tmg
+            else
+              return 0;
+          }).filter((value, index, arr) => {
+            return index < this.changeData.pageSize
+          })
+        }
+      },
+      methods: {
+        mySort: function (type) {
+          if (type === this.changeData.currentSort) {
+            this.changeData.sortType = (this.changeData.sortType === 'asc' ? 'desc' : 'asc');
+          }
+          else {
+            this.changeData.currentSort = type;
+          }
+        }
+      }
+    })
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- CSS only -->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <style>
+    .button .btn {
+      width: 30%;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .form-control {
+      width: 60%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8" style="background-color: #eeeeee;">
+        <div class="button">
+          <button type="button" name="" id="dangkiBtn" class="btn btn-light" btn-lg btn-block"
+            onclick="activeBtn('dangki')">Đăng kí</button>
+          <button type="button" name="" id="dangnhapBtn" class="btn btn-dark" btn-lg btn-block"
+            onclick="activeBtn('dangnhap')">Đăng nhập</button>
+        </div>
+
+        <!-- Start 
+            Div
+          Dang ki
+          -->
+
+        <div id="dangki" style="padding:15px 25px;display: block;">
+          <h1 style="text-align: center;">Đăng kí thành viên</h1>
+          <hr>
+          <form name="formDK" action="#">
+            <div class="form-group">
+              <label for="">Tên đăng nhập</label>
+              <input type="text" class="form-control" name="tenDangNhap" id="" aria-describedby="helpId"
+                placeholder="Tên đăng nhập">
+              <p id="error_tendn" style="color: red;"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Mật khẩu</label>
+              <input type="text" class="form-control" name="matkhau" id="" aria-describedby="helpId"
+                placeholder="Mật khẩu">
+              <p id="error_matkhau" style="color: red;"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="email" class="form-control" name="email" id="" aria-describedby="helpId" placeholder="Email">
+              <p id="error_email" style="color: red;"></p>
+            </div>
+            <div class="form-group">
+              <label for="">Nghề nghiệp</label>
+              <select class="form-control" name="" id="">
+                <option selected>Khác</option>
+                <option>Công nhân</option>
+                <option>Kĩ sư</option>
+                <option>Tự do</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="">Tuổi</label>
+              <input type="text" class="form-control" name="tuoi" id="" aria-describedby="helpId" placeholder="Tuổi">
+              <p id="error_tuoi" style="color: red;"></p>
+            </div>
+            <div class="form-group">
+              <p>Giới tính</p>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gioitinh" id="inlineCheckbox1" value="option1">
+                <label class="form-check-label" for="inlineCheckbox1">Nam</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gioitinh" id="inlineCheckbox2" value="option2">
+                <label class="form-check-label" for="inlineCheckbox2">Nữ</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="gioitinh" id="inlineCheckbox3" value="option3"
+                  checked>
+                <label class="form-check-label" for="inlineCheckbox3">Khác</label>
+              </div>
+            </div>
+            <button class="btn btn-info" onclick="event.preventDefault(); checkValue();"> Đăng kí </button>
+          </form>
+          <p>Bạn đã có tài khoản? Vui lòng click <a href="#" onclick="activeBtn('dangnhap')">Đăng nhập</a></p>
+        </div>
+
+        <!-- Start 
+            Div
+          Dang nhap
+          -->
+
+        <div id="dangnhap" style="padding:15px 25px;display: none;">
+          <h1 style="text-align: center;">Đăng kí thành viên</h1>
+          <hr>
+          <form action="#">
+            <div class="form-group">
+              <label for="">Tên đăng nhập</label>
+              <input type="text" class="form-control" name="" id="" aria-describedby="helpId"
+                placeholder="Tên đăng nhập">
+            </div>
+            <div class="form-group">
+              <label for="">Mật khẩu</label>
+              <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Mật khẩu">
+            </div>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="checkbox" class="form-check-input" name="" id="" value="checkedValue" checked>
+                Ghi nhớ lần sau
+              </label>
+            </div>
+            <button class="btn btn-info"> Đăng nhập </button>
+          </form>
+          <p>Bạn <b>chưa</b> có tài khoản? Vui lòng click <a href="#" onclick="activeBtn('dangki');">Đăng kí</a></p>
+        </div>
+      </div>
+      <div class="col-sm-2"></div>
+    </div>
+  </div>
+
+  <script>
+    function activeBtn(id) {
+      var btn = document.getElementById(id + "Btn");
+      var div = document.getElementById(id);
+
+      if (id == 'dangki') {
+        anotherBtn = document.getElementById('dangnhapBtn');
+        anotherDiv = document.getElementById('dangnhap');
+
+        btn.className = 'btn btn-light';
+        anotherBtn.className = 'btn btn-dark';
+        div.style.display = 'block';
+        anotherDiv.style.display = 'none';
+      }
+      else {
+        anotherBtn = document.getElementById('dangkiBtn');
+        anotherDiv = document.getElementById('dangki');
+
+        btn.className = 'btn btn-light';
+        anotherBtn.className = 'btn btn-dark';
+        div.style.display = 'block';
+        anotherDiv.style.display = 'none';
+      }
+    }
+
+    function checkRequired() {
+      var pTendn = document.getElementById("error_tendn");
+      var pMatkhau = document.getElementById("error_matkhau");
+      var pEmail = document.getElementById("error_email");
+      var pTuoi = document.getElementById("error_tuoi");
+
+      if (formDK.tenDangNhap.value == "" || formDK.matkhau.value == "" || formDK.email.value == "" || formDK.tuoi.value == "") {
+        if (formDK.tenDangNhap.value == "")
+          pTendn.innerHTML = "Tên đăng nhập không được để trống";
+        else
+          pTendn.innerHTML = "";
+        if (formDK.matkhau.value == "")
+          pMatkhau.innerHTML = "Mật khẩu không được để trống";
+        else
+          pMatkhau.innerHTML = "";
+        if (formDK.email.value == "")
+          pEmail.innerHTML = "Email không được để trống";
+        else
+          pEmail.innerHTML = "";
+        if (formDK.tuoi.value == "")
+          pTuoi.innerHTML = "Tuổi không được để trống";
+        else
+          pTuoi.innerHTML = "";
+        return false;
+      }
+      else {
+        pTendn.innerHTML = "";
+        pMatkhau.innerHTML = "";
+        pEmail.innerHTML = "";
+        pTuoi.innerHTML = "";
+        return true;
+      }
+    }
+
+    function checkValue() {
+      var pTendn = document.getElementById("error_tendn");
+      var pTuoi = document.getElementById("error_tuoi");
+
+      if (checkRequired()) {
+        if (formDK.tenDangNhap.value.length > 30)
+          pTendn.innerHTML = "Tên đăng nhập không được quá 30 kí tự";
+        else
+          pTendn.innerHTML = "";
+        if (isNaN(formDK.tuoi.value))
+          pTuoi.innerHTML = "Tuổi nhập vào phải là số";
+        else if (formDK.tuoi.value < 18 || formDK.tuoi.value > 40)
+          pTuoi.innerHTML = "Tuổi phải lớn hon 18 hoặc nhỏ hơn 40";
+        else pTuoi.innerHTML = "";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+﻿1. Khái niệm cơ bản
+- Syntax Parser: dịch js sang mã máy
+  Execution Context: dịch sang và quy định cách dịch, cái nào chạy trc, chạy sau...
+  Lexical Environment
+- Name, value, Object:
+- Global Environment và Global Object
+  this = windown ( trong mtrg chrome )
+- Hoisting
+- Scope chain
+
+2. Toán tử:
+- Dynamic Typing
+- Primitives type: undefined, null, boolean, string, number, symbol (es6)
+- Toán tử và thứ tự ưu tiên:
+- Coerion
+
+3. Hàm và object
+- Khởi tạo Object(JSON)
+  trong object có 3 loại: properties, method, object
+- Cách truy cập thành phần trong JSON: sử dụng '.' hoặc sử dụng '[]'
+vd: user.age hoặc user['age']
+- First-class function
+ coi function như 1 kiểu dl object
+- Function declaration và Function expression

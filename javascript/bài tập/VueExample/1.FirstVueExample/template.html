@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+
+  <!-- CSS only -->
+  <!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">-->
+  <link rel="stylesheet" href="css/bootstrap.css">
+
+  <!-- Font Awesome-->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+  <!-- JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+    crossorigin="anonymous"></script>
+  <script type="text/javascript" src="js/vue.js"></script>
+  <style>
+    span {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>My name is <span> {{model.name}}</span></p>
+    <img v-bind:src='model.src' v-bind:title='model.title' v-bind:style='model.style_img'>
+    <ul v-for='item in model.data_set'>
+      <li>{{ item.name}}</li>
+      <li>{{ item.age}}</li>
+      <li>{{ item.sex}}</li>
+    </ul>
+    <select v-model='message'>
+      <option v-for='item in model.data_set' v-bind:value='item.id'> {{item.name}}</option>
+    </select>
+    <p>What you have choose is: <span>{{message}}</span></p>
+    <input type="text" v-model='email'>
+    <p>Email bạn đã nhập là <span> {{computed_msg}}</span></p>
+    <input v-model='firstName' placeholder="First Name">
+    <input v-model='lastName' placeholder="Last Name">
+    <input v-model='fullName' placeholder="Full Name">
+    <p>Tên</p>
+    <input v-model='model.name' @input='check()'>
+    <button class="btn btn-info" @click='sayHi("a",1,2)'>Click me</button>
+  </div>
+
+
+
+  <script type="text/javascript">
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        model: {
+          name: 'thanh',
+          src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1184px-Vue.js_Logo_2.svg.png',
+          title: 'I\'m the logo',
+          data_set: [
+            { id: 1, name: 'thanh', age: 21, sex: 'female' },
+            { id: 2, name: 'minh', age: 21, sex: 'femal' },
+            { id: 3, name: 'thai', age: 21, sex: 'female' },
+            { id: 4, name: 'thao', age: 21, sex: 'male' }
+          ],
+          style_img: {
+            width: '300px',
+            height: '300px'
+          }
+        },
+        message: '',
+        email: '',
+        firstName: 'Real',
+        lastName: 'Me'
+      },
+      computed: {
+        computed_msg: function () {
+          var txtEmail = this.email;
+          var index = txtEmail.indexOf('@');
+          if (txtEmail === '') {
+
+          } else
+            if (index === -1) {
+              return 'Email không hợp lệ';
+            }
+            else {
+              return txtEmail.slice(0, index)
+            }
+        },
+        fullName: {
+          get: function () {
+            return this.firstName + ' ' + this.lastName
+          },
+          set: function (v) {
+            var str = v.split(' ');
+            this.firstName = str[0];
+            this.lastName = str[str.length - 1]
+          }
+        },
+        check:function() {
+          this.model.name = this.model.name.substr(0,10)
+        }
+      },
+      methods: {
+        output: function () {
+          console.log(this)
+        },
+        sayHi: function () {
+          alert(Array.from(arguments))
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
